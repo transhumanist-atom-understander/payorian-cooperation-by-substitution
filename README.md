@@ -4,10 +4,11 @@ It cooperates with another FairBot despite the apparent infinite regress, by Lö
 A related line of work was how to represent statements like "if I take this action, it will have that consequence" in provability logic.
 For example there's [these old slides by Vladimir Slepnev](https://web.archive.org/web/20150717031152/https://intelligence.org/wp-content/uploads/2015/05/Slepnev-Models-of-decision-making-based-on-logical-counterfactuals.pdf) that I came across on the MIRI website.
 
-There's also
-[a post by James Payor](https://www.lesswrong.com/posts/SBahPHStddcFJnyft/some-constructions-for-proof-based-cooperation-without-loeb) with what I think of as alternate FairBots, which look like different formalizations of the consequence of an action.
+[A post by James Payor](https://www.lesswrong.com/posts/SBahPHStddcFJnyft/some-constructions-for-proof-based-cooperation-without-loeb) brings these together.
+Well, maybe he didn't think of it like that.
+But I think of it as alternate FairBots, which look like different formalizations of the consequence of an action.
 Like, a bot that cooperates if and only if it can prove its cooperation _results_ in its opponent's cooperation.
-Such bots are equivalent to FairBot assuming Löb's theorem, but the idea was to cut off the infinite regress without Löb's theorem.
+Such bots are equivalent to FairBot conditional on Löb's theorem, but the idea was to cut off the infinite regress without Löb's theorem.
 
 I'm writing this post to share some formula manipulations, simple substitutions really.
 It turns out it's very easy to see that these bots are equivalent, assuming Löb's theorem.
