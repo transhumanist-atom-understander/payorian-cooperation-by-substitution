@@ -4,9 +4,9 @@ It cooperates with another FairBot despite the apparent infinite regress, by Lö
 A related line of work was how to represent statements like "if I take this action, it will have that consequence" in provability logic.
 For example there's [these old slides by Vladimir Slepnev](https://web.archive.org/web/20150717031152/https://intelligence.org/wp-content/uploads/2015/05/Slepnev-Models-of-decision-making-based-on-logical-counterfactuals.pdf) that I came across on the MIRI website.
 
-There's 
-[a post by James Payor](https://www.lesswrong.com/posts/SBahPHStddcFJnyft/some-constructions-for-proof-based-cooperation-without-loeb), which I think of as alternate FairBots, which look like different formalizations of the consequence of an action.
-Like, a bot that cooperates if and only if it can prove its cooperation _results_ in its opponents cooperation.
+There's also
+[a post by James Payor](https://www.lesswrong.com/posts/SBahPHStddcFJnyft/some-constructions-for-proof-based-cooperation-without-loeb) with what I think of as alternate FairBots, which look like different formalizations of the consequence of an action.
+Like, a bot that cooperates if and only if it can prove its cooperation _results_ in its opponent's cooperation.
 Such bots are equivalent to FairBot assuming Löb's theorem, but the idea was to cut off the infinite regress without Löb's theorem.
 
 I'm writing this post to share some formula manipulations, simple substitutions really.
@@ -37,27 +37,6 @@ $$P \leftrightarrow \Box(P \rightarrow Q)$$
 
 This is [Payor's "Idea #1"](https://www.lesswrong.com/posts/SBahPHStddcFJnyft/some-constructions-for-proof-based-cooperation-without-loeb#Idea__1__try_to_prove_A_B).
 It's also what you would get by straightforwardly applying the formula in [the Slepnev slides](https://web.archive.org/web/20150717031152/https://intelligence.org/wp-content/uploads/2015/05/Slepnev-Models-of-decision-making-based-on-logical-counterfactuals.pdf) to formalize "I'll cooperate if that results in my opponent's cooperation".
-
-What about Payor's ["Idea #2"](https://www.lesswrong.com/posts/SBahPHStddcFJnyft/some-constructions-for-proof-based-cooperation-without-loeb#Idea__2__try_to_prove__A_B), the subject of [Critch's post](https://www.lesswrong.com/posts/2WpPRrqrFQa6n2x3W/modal-fixpoint-cooperation-without-loeb-s-theorem)?
-That says
-
-$$P \leftrightarrow \Box(\Box P \rightarrow Q)$$
-
-As it turns out, this is a consequence of Löb's theorem:
-
-$$\Box(\Box\Box Q \rightarrow Q) \leftrightarrow \Box Q$$
-
-Using this instead of Löb's theorem gets us Idea #2 the same way we got Idea #1.
-
-Substituting:
-
-$$P \leftrightarrow \Box(\Box Q \rightarrow Q)$$
-
-Then, substituting with the FairBot definition:
-
-$$P \leftrightarrow \Box(P \rightarrow Q)$$
-
-This is [Payor's "Idea #1"](https://www.lesswrong.com/posts/SBahPHStddcFJnyft/some-constructions-for-proof-based-cooperation-without-loeb#Idea__1__try_to_prove_A_B).
 
 What about Payor's ["Idea #2"](https://www.lesswrong.com/posts/SBahPHStddcFJnyft/some-constructions-for-proof-based-cooperation-without-loeb#Idea__2__try_to_prove__A_B), the subject of [Critch's post](https://www.lesswrong.com/posts/2WpPRrqrFQa6n2x3W/modal-fixpoint-cooperation-without-loeb-s-theorem)?
 That says
@@ -109,7 +88,7 @@ We defect on each other all the way down in these possible worlds, however deep 
 
 Well, let's look at the first substitution we did, using Löb's theorem:
 
-$$\Box(\Box Q \rightarrow Q) \leftrightarrow \Box Q$$
+$$P \leftrightarrow \Box(\Box Q \rightarrow Q)$$
 
 Negating both sides:
 
@@ -124,9 +103,9 @@ To see that mechanistically, we can try substituting, using the ordinary FairBot
 
 $$\neg P \leftrightarrow \Diamond (\Box Q \wedge  \Diamond \neg P)$$
 
-$$\neg P \leftrightarrow \neg \Diamond (\Box Q \wedge  \Diamond \Diamond \neg Q)$$
+$$\neg P \leftrightarrow \Diamond (\Box Q \wedge  \Diamond \Diamond \neg Q)$$
 
-The right-hand side can be refuted in provability logic (that is, its negation is a theorem GL).
+The right-hand side can be refuted in provability logic (that is, its negation is a theorem of GL).
 The $\Box Q$ contradicts the $\lnot Q$ two worlds down.
 We can't keep substituting forever like we did before; the chain stops here.
 
@@ -155,7 +134,7 @@ Negating both sides,
 
 $$\neg P \leftrightarrow  \Diamond(\Box P \wedge  \neg Q)$$
 
-[I've previously called this condition "betrayal"](https://www.lesswrong.com/posts/KRyuwyQiaDPdaHnuk/inside-the-mind-of-a-fair-player-cooperating): I defect if you betray me, that is, defect even though you can prove I cooperate.
+[I've previously called this condition "betrayal"](https://www.lesswrong.com/posts/KRyuwyQiaDPdaHnuk/inside-the-mind-of-a-fair-player-cooperating): I defect if it's possible that you betray me, that is, defect even though you can prove I cooperate.
 That was in my post trying to walk through the reasoning in plain English.
 
 Back to modal logic.
@@ -167,17 +146,17 @@ Again, the right-hand side is refutable; $\Box P$ contradicts $\lnot P$ one worl
 
 ## Conclusion
 
-[Idea #2 was exciting to me because this "I imagine you imagnining me" reasoning cuts off after just a few steps](https://www.lesswrong.com/posts/LaCP6WyNzX8kiZn3w/payorian-cooperation-is-easy-with-kripke-frames).
+[Idea #2 was exciting to me because this "I imagine you imagining me" reasoning cuts off after just a few steps](https://www.lesswrong.com/posts/LaCP6WyNzX8kiZn3w/payorian-cooperation-is-easy-with-kripke-frames).
 It was my first hint that cooperation in provability logic might not be so mysterious.
 
 Now I get that you can cut off infinite regresses with the contrapositive of Löb's theorem:
 
-$$\Diamond P \rightarrow \Diamond (\Box P \wedge P)$$
+$$\Diamond P \rightarrow \Diamond (\Box \neg P \wedge P)$$
 
 In provability logic with Löb's theorem, these reformulations simply follow from there.
 
 Of course the point of the reformulations is that they don't require Löb's theorem.
-It's like we "already used" Löb's theorem in rewriting the condition, and now longer need to prove cooperation.
+It's like we "already used" Löb's theorem in rewriting the condition, and no longer need it to prove cooperation.
 
 I don't know the ultimate significance of that.
 But I've at least shared something of personal significance.
