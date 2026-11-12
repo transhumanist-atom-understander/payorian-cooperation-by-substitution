@@ -151,7 +151,7 @@ It was my first hint that cooperation in provability logic might not be so myste
 
 Now I get that you can cut off infinite regresses with the contrapositive of Löb's theorem:
 
-$$\Diamond P \rightarrow \Diamond (\Box \neg P \wedge P)$$
+$$\Diamond \neg P \rightarrow \Diamond (\Box P \wedge \neg P)$$
 
 In provability logic with Löb's theorem, these reformulations simply follow from there.
 
